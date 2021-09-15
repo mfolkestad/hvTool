@@ -1,7 +1,7 @@
 import tkinter as tk
 import cv2
 import os 
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
 from pathlib import Path 
 
 # User input 
@@ -10,6 +10,8 @@ name = name.replace(" ","")
 date = input("Date: ")
 date = date.replace(" ","")
 workDir = input("Enter dir: ")
+scaleParam = input("Scale Parameter for Img: ")
+scaleParam = float(scaleParam)/100
 
 # Directory stuff 
 while Path(workDir).exists() == False:
@@ -32,7 +34,7 @@ def next_img():
         with open(outfile, "a") as f:
             f.write(imgfile + ";")
         image = cv2.imread(imgfile, flags=cv2.IMREAD_GRAYSCALE)
-        image = cv2.resize(image, (0, 0), fx = 0.25, fy = 0.25)
+        image = cv2.resize(image, (0, 0), fx = scaleParam, fy = scaleParam) # Uppdate to fit the screen
         img = Image.fromarray(image)
         imgtk = ImageTk.PhotoImage(image=img)
         label.imgtk = imgtk
@@ -74,13 +76,13 @@ label = tk.Label(top)
 label.pack()
 
 # Entry box 
-w = tk.Entry(top, takefocus=True, font=('calibre',32,'normal'), width=10)
-w.place(x=180, y=650)
+w = tk.Entry(top, takefocus=True, font=('calibre',32,'normal'), width=10) #UPDATE FONT SIZE IF NESSECARY
+w.place(x=180, y=650) # PLACE THE ENTRY BOX
 w.focus()
 
 # Text box
-T = tk.Text(top, font=('calibre',32,'normal'), fg = "red" , height=1, width=20)
-T.place(x = 180, y = 150)
+T = tk.Text(top, font=('calibre',25,'normal'), fg = "red" , height=1, width=20) #UPDATE FONT SIZE IF NESSECARY
+T.place(x = 180, y = 150) # PLACE THE FILENAME BOX
 
 next_img()
 
