@@ -146,15 +146,15 @@ label = tk.Label(top)
 label.pack()
 
 # Text box
-T = tk.Text(top, font=('calibre',25,'normal'), fg = "red" , height=1, width=20) #UPDATE FONT SIZE IF NECESSARY
-T.place(relx = 0.3, rely = 0.1) # PLACE THE FILENAME BOX
+T = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1, width=10) #UPDATE FONT SIZE IF NECESSARY
+T.place(relx = 0.1, rely = 0.1) # PLACE THE FILENAME BOX
 
 # Counter
-counter = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1, width=10) #UPDATE FONT SIZE IF NECESSARY
+counter = tk.Text(top, font=('calibre'12,'normal'), fg = "red" , height=1, width=4) #UPDATE FONT SIZE IF NECESSARY
 counter.place(anchor=tk.NW) # PLACE THE FILENAME BOX
 
 # Entry box 
-w = tk.Entry(top, takefocus=True, font=('calibre',32,'normal'), width=10) #UPDATE FONT SIZE IF NECESSARY
+w = tk.Entry(top, takefocus=True, font=('calibre',20,'normal'), width=7) #UPDATE FONT SIZE IF NECESSARY
 w.place(relx = 0.2, rely = 0.9) # PLACE THE ENTRY BOX
 
 # Entry box For scale parameter
