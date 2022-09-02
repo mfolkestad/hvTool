@@ -67,15 +67,15 @@ def next_img():
         label.configure(image=imgtk)
         T.delete(1.0, tk.END)
         T.insert(1.0, imgfile)
-
+        T.config(width = len(imgfile))
         global count
         count += 1
         counter_str = str(count) + "/" + n_img
         counter.delete(1.0,tk.END)
         counter.insert(1.0,counter_str)
+        counter.config(width = len(counter_str))
     except StopIteration:
         top.destroy()
-    
     
 def func2entries(event, default=default):
     with open(outfile, "r") as f:
@@ -146,15 +146,15 @@ label = tk.Label(top)
 label.pack()
 
 # Text box
-T = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1, width=10) #UPDATE FONT SIZE IF NECESSARY
+T = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1) 
 T.place(relx = 0.1, rely = 0.1) # PLACE THE FILENAME BOX
 
 # Counter
-counter = tk.Text(top, font=('calibre',12,'normal'), fg = "red" , height=1, width=4) #UPDATE FONT SIZE IF NECESSARY
+counter = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1)
 counter.place(anchor=tk.NW) # PLACE THE FILENAME BOX
 
 # Entry box 
-w = tk.Entry(top, takefocus=True, font=('calibre',20,'normal'), width=7) #UPDATE FONT SIZE IF NECESSARY
+w = tk.Entry(top, takefocus=True, font=('calibre',15,'normal'))
 w.place(relx = 0.2, rely = 0.9) # PLACE THE ENTRY BOX
 
 # Entry box For scale parameter
