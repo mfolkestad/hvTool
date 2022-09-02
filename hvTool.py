@@ -34,6 +34,8 @@ outfile = Path.cwd().parent / filename
 # Image files 
 im_files = [f for f in os.listdir(".") if f[-3:] == 'jpg']
 images = iter(im_files)
+n_img = str(len(im_files))
+count = 0
 
 def set_scale():
     w.lower(belowThis=label)
@@ -65,6 +67,12 @@ def next_img():
         label.configure(image=imgtk)
         T.delete(1.0, tk.END)
         T.insert(1.0, imgfile)
+
+        global count
+        count += 1
+        counter_str = str(count) + "/" + n_img
+        counter.delete(1.0,tk.END)
+        counter.insert(1.0,counter_str)
     except StopIteration:
         top.destroy()
     
@@ -140,6 +148,10 @@ label.pack()
 # Text box
 T = tk.Text(top, font=('calibre',25,'normal'), fg = "red" , height=1, width=20) #UPDATE FONT SIZE IF NECESSARY
 T.place(relx = 0.3, rely = 0.1) # PLACE THE FILENAME BOX
+
+# Counter
+counter = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1, width=10) #UPDATE FONT SIZE IF NECESSARY
+counter.place(anchor=tk.NW) # PLACE THE FILENAME BOX
 
 # Entry box 
 w = tk.Entry(top, takefocus=True, font=('calibre',32,'normal'), width=10) #UPDATE FONT SIZE IF NECESSARY
