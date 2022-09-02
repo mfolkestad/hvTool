@@ -150,7 +150,7 @@ T = tk.Text(top, font=('calibre',15,'normal'), fg = "red" , height=1, width=10) 
 T.place(relx = 0.1, rely = 0.1) # PLACE THE FILENAME BOX
 
 # Counter
-counter = tk.Text(top, font=('calibre'12,'normal'), fg = "red" , height=1, width=4) #UPDATE FONT SIZE IF NECESSARY
+counter = tk.Text(top, font=('calibre',12,'normal'), fg = "red" , height=1, width=4) #UPDATE FONT SIZE IF NECESSARY
 counter.place(anchor=tk.NW) # PLACE THE FILENAME BOX
 
 # Entry box 
