@@ -27,7 +27,7 @@ images = iter(im_files)
 n_img = str(len(im_files))
 count = 0
 
-def next_img():
+def next_img(setCounterBack = False):
     try:
         global imgfile
         imgfile = next(images)  # get the next image from the iterator
@@ -42,6 +42,8 @@ def next_img():
         T.delete(1.0, tk.END)
         T.insert(1.0, imgfile)
         global count
+        if setCounterBack:
+            count -=2
         count += 1
         counter_str = str(count) + "/" + n_img
         counter.delete(1.0,tk.END)
@@ -69,7 +71,7 @@ def go_back(event):
     i = im_files.index(imgfile) - 1 
     global images
     images = iter(im_files[i:])
-    next_img()
+    next_img(setCounterBack=True)
 
 # tkinter stuff 
 top = tk.Tk()

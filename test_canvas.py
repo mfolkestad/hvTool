@@ -26,7 +26,7 @@ images = iter(im_files)
 n_img = str(len(im_files))
 count = 0
 
-def next_img():
+def next_img(setCounterBack = False):
     try:
         global imgfile
         label.imgtk = imgtk
