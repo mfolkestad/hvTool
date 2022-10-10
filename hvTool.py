@@ -16,6 +16,11 @@ scaleParam = input("Scale Parameter for Img: ")
 default = input("Choose default value: ")
 scaleParam = float(scaleParam)/100
 nEntries = float(input("Entries per img: "))
+showCrop = False 
+adjust = input("Show crop at: ")
+if adjust:
+    showCrop = True
+    adjust = float(adjust)/100
 
 # Directory stuff 
 while Path(workDir).exists() == False:
@@ -61,6 +66,10 @@ def next_img(setCounterBack=False):
             f.write(imgfile + ";")
         image = cv2.imread(imgfile, flags=cv2.IMREAD_GRAYSCALE)
         image = cv2.resize(image, (0, 0), fx = scaleParam, fy = scaleParam) # Update to fit the screen
+        if showCrop:
+            height , width = image.shape
+            crop_at = int(width/2 - (width*adjust))
+            image = cv2.line(image, (crop_at,0), (crop_at,height), (0,0,0), 10)
         img = Image.fromarray(image)
         imgtk = ImageTk.PhotoImage(image=img)
         label.imgtk = imgtk
